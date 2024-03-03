@@ -10,20 +10,18 @@
 
 // Vertices coordinates
 GLfloat vertices[] =
-{ //                COORDINATES            /       COLORS             //
-	-0.5f,  -0.5f * float(sqrt(3))     / 3, 0.0f, 0.8f, 0.3f,  0.02f, // Lower Left Corner
-	0.5f,   -0.5f * float(sqrt(3))     / 3, 0.0f, 0.8f, 0.3f,  0.02f, // Lower Right Corner
-	0.0f,   0.5f  * float(sqrt(3)) * 2 / 3, 0.0f, 1.0f, 0.6f,  0.32f, // Upper Corner
-	-0.25f, 0.5f  * float(sqrt(3))     / 6, 0.0f, 0.9f, 0.45f, 0.17f, // Inner Left Corner
-	0.25f,  0.5f  * float(sqrt(3))     / 6, 0.0f, 0.9f, 0.45f, 0.17f, // Inner Right Corner
-	0.0f,   -0.5f  * float(sqrt(3))     / 3, 0.0f, 0.8f, 0.3f,  0.02f  // Inner Down Corner 
+// SQUARE
+{ //       COORDINATES     /       COLORS      // 
+	-0.5f,  -0.5f,   0.0f,   1.0f, 0.0f, 0.0f, // Lower Left
+	-0.5f,   0.5f,   0.0f,   0.0f, 1.0f, 0.0f, // Lower Right
+	 0.5f,   0.5f,   0.0f,   0.0f, 0.0f, 1.0f, // Upper Left
+	 0.5f,  -0.5f,   0.0f,   1.0f, 1.0f, 1.0f // Upper Right
 };
 
 GLuint indices[] =
 {
-	0, 3, 5, // Lower Left Triangle
-	3, 2, 4, // Lower Right Triangle
-	5, 4, 1 // Upper Triangle
+	0, 2, 1,
+	0, 3, 2
 };
 
 int main()
@@ -87,7 +85,7 @@ int main()
 		// Bind the VAO so OpenGl knows to use it
 		VAO1.Bind();
 		// Draw the triangle using the GL_TRIANGLES primitive
-		glDrawElements(GL_TRIANGLES, 9, GL_UNSIGNED_INT, 0);
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		// Swap the back buffer with the front buffer
 		glfwSwapBuffers(window);
 		// Take care of all GLFW events
