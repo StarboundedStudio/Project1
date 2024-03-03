@@ -72,6 +72,14 @@ int main()
 
 	GLuint uniID = glGetUniformLocation(shaderProgram.ID, "scale");
 
+	// Texture
+
+	int widthImg, heightImg, numColCh;
+	unsigned char* bytes = stbi_load("popcat.jpg", &widthImg, &heightImg, &numColCh, 0);
+
+	GLuint texture;
+	glGenTextures(1, &texture);
+
 	// Main while loop
 	while (!glfwWindowShouldClose(window))
 	{
@@ -95,6 +103,7 @@ int main()
 	VAO1.Delete();
 	EBO1.Delete();
 	VAO1.Delete();
+	glDeleteTextures(1, &texture);;
 	shaderProgram.Delete();
 
 	// Delete window before ending the program
